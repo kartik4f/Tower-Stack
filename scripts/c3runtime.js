@@ -3801,20 +3801,21 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Exps.Width,
 		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Shape3D.Acts.SetX,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.System.Acts.Wait,
 		C3.Behaviors.Fade.Acts.StartFade,
 		C3.Plugins.System.Cnds.PickAll,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.random,
 		C3.Plugins.Shape3D.Acts.SetInstanceVar,
 		C3.Plugins.Shape3D.Acts.SetBoolInstanceVar,
 		C3.Plugins.Shape3D.Acts.Destroy,
 		C3.Plugins.System.Acts.GoToLayout,
-		C3.Plugins.Touch.Cnds.OnTapGestureObject
+		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Text.Acts.SetText
 	];
 };
 self.C3_JsPropNameTable = [
@@ -3845,6 +3846,7 @@ self.C3_JsPropNameTable = [
 	{CanTouch: 0},
 	{GamePlayLayerName: 0},
 	{GameOverLayerName: 0},
+	{Score: 0},
 	{top_x: 0},
 	{second_x: 0},
 	{diff_x: 0},
@@ -4062,7 +4064,11 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (240 + (n0.ExpInstVar() * 200));
 		},
-		() => 2
+		() => 2,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("Score: ", v0.GetValue());
+		}
 ];
 
 
